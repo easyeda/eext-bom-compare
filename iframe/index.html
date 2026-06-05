@@ -1309,6 +1309,34 @@
 		<input type="file" id="file-input-new" accept=".csv,.txt,.xls,.xlsx" style="display:none;" />
 
 		<script>
+			var edaObj = (typeof eda !== 'undefined') ? eda : (window.parent && window.parent.eda);
+			function t(tag) {
+				if (edaObj && edaObj.sys_I18n) return edaObj.sys_I18n.text(tag);
+				return tag;
+			}
+			function applyI18n() {
+				document.querySelectorAll('[data-i18n]').forEach(function(el) {
+					var tag = el.getAttribute('data-i18n');
+					var translated = t(tag);
+					if (translated !== tag) el.textContent = translated;
+				});
+				document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+					var tag = el.getAttribute('data-i18n-placeholder');
+					var translated = t(tag);
+					if (translated !== tag) el.placeholder = translated;
+				});
+				document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+					var tag = el.getAttribute('data-i18n-title');
+					var translated = t(tag);
+					if (translated !== tag) el.title = translated;
+				});
+			}
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', applyI18n);
+			} else {
+				applyI18n();
+			}
+
 			// Workaround for EasyEDA bug: large iframe scripts (>~458KB) get loaded
 			// as blob URLs whose content is the literal string "undefined".
 			// We bypass it by reading bundle.js directly from the IndexedDB

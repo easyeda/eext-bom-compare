@@ -1,5 +1,10 @@
 {
 	"BOM Compare": "BOM 对比",
 	"BOM Compare...": "BOM 对比...",
-	"About...": "关于..."
+	"About...": "关于...",
+	"BOM 对比工具": "BOM 对比工具",
+	"对比两个 BOM 文件的差异，支持 CSV/TXT/XLS/XLSX 格式": "对比两个 BOM 文件的差异，支持 CSV/TXT/XLS/XLSX 格式",
+	"Tool": "Tool",
+	"BOM": "BOM",
+	"Compare": "Compare"
 }
